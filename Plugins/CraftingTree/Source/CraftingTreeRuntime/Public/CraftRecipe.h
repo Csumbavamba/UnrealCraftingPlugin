@@ -7,10 +7,12 @@
 #include "CraftRecipe.generated.h"
 
 /**
- * 
+ * A very simple crafting recipe that can be used to create basic and advanced recipes
+ * Basic recipes include 2 components and it produces a single outcome
+ * Advanced recipes can include more than 2 components to produce the single outcome
  */
-UCLASS()
-class CRAFTINGTREE_API UCraftRecipe : public UDataAsset
+UCLASS(ClassGroup = "Crafting", Category = "Crafting", BlueprintType, Blueprintable)
+class CRAFTINGTREERUNTIME_API UCraftRecipe : public UDataAsset
 {
 	GENERATED_BODY()
 

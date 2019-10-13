@@ -5,7 +5,7 @@
 	"FriendlyName": "Crafting Tree",
 	"Description": "",
 	"Category": "Other",
-	"CreatedBy": "Zsombor Pirok",
+	"CreatedBy": "",
 	"CreatedByURL": "",
 	"DocsURL": "",
 	"MarketplaceURL": "",
@@ -14,10 +14,15 @@
 	"IsBetaVersion": false,
 	"Installed": false,
 	"Modules": [
-		{
-			"Name": "CraftingTree",
-			"Type": "Editor",
-			"LoadingPhase": "Default"
-		}
+    {
+      "Name": "CraftingTreeRuntime",
+      "Type": "Runtime",
+      "LoadingPhase": "PreDefault"
+    },
+    {
+      "Name": "CraftingTreeEditor",
+      "Type": "Editor",
+      "LoadingPhase": "Default"
+    }
 	]
 }

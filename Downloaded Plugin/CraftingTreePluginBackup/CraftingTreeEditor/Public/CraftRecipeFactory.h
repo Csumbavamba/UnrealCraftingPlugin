@@ -7,7 +7,7 @@
 #include "CraftRecipeFactory.generated.h"
 
 /**
- * 
+ * A Factory that is responsible for creating Crafting Recipes
  */
 UCLASS()
 class CRAFTINGTREE_API UCraftRecipeFactory : public UFactory
@@ -18,6 +18,10 @@ public:
 
 	UCraftRecipeFactory();
 
+protected:
+	virtual bool IsMacroFactory() const { return false; }
+
+public:
 	// Begin UFactory Interface
 	virtual UObject* FactoryCreateNew(UClass* Class, UObject* InParent, FName Name, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn) override;
 	// End UFactory Interface
