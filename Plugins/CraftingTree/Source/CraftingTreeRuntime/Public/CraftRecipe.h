@@ -16,7 +16,7 @@ class CRAFTINGTREERUNTIME_API UCraftRecipe : public UDataAsset
 {
 	GENERATED_BODY()
 
-protected:
+public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Crafting Recipe")
 		/** The object that is the result of combining the Components */
