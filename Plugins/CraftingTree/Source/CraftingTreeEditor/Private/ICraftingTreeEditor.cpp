@@ -13,6 +13,8 @@ class FCraftingTreeEditor : public ICraftingTreeEditor
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
+
+	TSharedRef<IAssetTypeActions> CraftRecipeItemDataBase;
 };
 
 IMPLEMENT_MODULE(FCraftingTreeEditor, CraftingTreeEditor)
@@ -25,7 +27,7 @@ void FCraftingTreeEditor::StartupModule()
 	IAssetTools& AssetTools = FModuleManager::LoadModuleChecked<FAssetToolsModule>("AssetTools").Get();
 	CraftRecipe_AssetCategory = AssetTools.RegisterAdvancedAssetCategory(FName(TEXT("CraftingAssets")), LOCTEXT("CraftingRecipe", "Crafting Recipe"));
 	{
-		TSharedRef<IAssetTypeActions> CraftRecipeItemDataBase = MakeShareable(new FCraftingRecipeAssetDatabase);
+		CraftRecipeItemDataBase = MakeShareable(new FCraftingRecipeAssetDatabase);
 		AssetTools.RegisterAssetTypeActions(CraftRecipeItemDataBase);
 	}
 
@@ -36,6 +38,15 @@ void FCraftingTreeEditor::ShutdownModule()
 {
 	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
 	// we call this function before unloading the module.
+
+	// Unregister all the asset types that we registered
+	if (FModuleManager::Get().IsModuleLoaded("AssetTools"))
+	{
+		IAssetTools& AssetTools = FModuleManager::GetModuleChecked<FAssetToolsModule>("AssetTools").Get();
+		{
+			AssetTools.UnregisterAssetTypeActions(CraftRecipeItemDataBase);
+		}
+	}
 }
 
 #undef LOCTEXT_NAMESPACE

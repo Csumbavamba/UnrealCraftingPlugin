@@ -9,25 +9,25 @@
 class  UCraftRecipe;
 
 /**
- * 
+ * The Primary Singleton Class that is responsible for managing all the Crafting Recipes
  */
-UCLASS()
+UCLASS(ClassGroup = "Crafting", Category = "Crafting", BlueprintType, Blueprintable)
 class CRAFTINGTREERUNTIME_API UCraftRecipeManager : public UObject
 {
 	GENERATED_BODY()
 
 public:
 
-	/** 
-	* Adds the provided recipe to the Stored Crafting Recipes, while not adding duplicates
-	* @param RecipeToAdd A CraftRecipe that is to be registered by the Recipe Manager
-	*/
-	void AddRecipe(UCraftRecipe* RecipeToAdd);
+	UFUNCTION(BlueprintCallable, Category = "Craft Recipe Manager")
+		/**
+		* Adds the provided recipe to the Stored Crafting Recipes, while not adding duplicates
+		* @param RecipeToAdd A CraftRecipe that is to be registered by the Recipe Manager
+		*/
+		void AddRecipe(UCraftRecipe* RecipeToAdd);
 
-	/** Empties the stored recipes */
-	void ClearRecipes();
-
-	UCraftRecipe* FindRecipe(TSubclassOf<AActor> Component1, TSubclassOf<AActor> Component2);
+	UFUNCTION(BlueprintCallable, Category = "Craft Recipe Manager")
+		/** Empties the stored recipes */
+		void ClearRecipes();
 
 	AActor* GetCraftResult(TSubclassOf<AActor> Component1, TSubclassOf<AActor> Component2);
 
