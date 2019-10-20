@@ -18,6 +18,12 @@ class CRAFTINGTREERUNTIME_API UCraftRecipeManager : public UObject
 
 public:
 
+	UCraftRecipeManager();
+
+	UFUNCTION(BlueprintCallable, Category = "Craft Recipe Manager") // TODO FIgure out whether this is needed or not
+		/** Loads all the Craft Recipe assets from Disk */
+		void LoadAllRecipes();
+
 	UFUNCTION(BlueprintCallable, Category = "Craft Recipe Manager")
 		/**
 		* Adds the provided recipe to the Stored Crafting Recipes, while not adding duplicates
@@ -33,6 +39,8 @@ public:
 
 protected:
 
-	TArray<UCraftRecipe*> StoredRecipes;
+	UPROPERTY(BlueprintReadOnly, Category = "Craft Recipe Manager")
+		/** All The Recipes that have can be used for Crafting */
+		TArray<UCraftRecipe*> StoredRecipes;
 	
 };

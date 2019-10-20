@@ -14,7 +14,6 @@ class FCraftingTreeEditor : public ICraftingTreeEditor
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 
-	TSharedRef<IAssetTypeActions> CraftRecipeItemDataBase;
 };
 
 IMPLEMENT_MODULE(FCraftingTreeEditor, CraftingTreeEditor)
@@ -27,7 +26,7 @@ void FCraftingTreeEditor::StartupModule()
 	IAssetTools& AssetTools = FModuleManager::LoadModuleChecked<FAssetToolsModule>("AssetTools").Get();
 	CraftRecipe_AssetCategory = AssetTools.RegisterAdvancedAssetCategory(FName(TEXT("CraftingAssets")), LOCTEXT("CraftingRecipe", "Crafting Recipe"));
 	{
-		CraftRecipeItemDataBase = MakeShareable(new FCraftingRecipeAssetDatabase);
+		TSharedRef<IAssetTypeActions> CraftRecipeItemDataBase = MakeShareable(new FCraftingRecipeAssetDatabase);
 		AssetTools.RegisterAssetTypeActions(CraftRecipeItemDataBase);
 	}
 
@@ -44,6 +43,7 @@ void FCraftingTreeEditor::ShutdownModule()
 	{
 		IAssetTools& AssetTools = FModuleManager::GetModuleChecked<FAssetToolsModule>("AssetTools").Get();
 		{
+			TSharedRef<IAssetTypeActions> CraftRecipeItemDataBase = MakeShareable(new FCraftingRecipeAssetDatabase);
 			AssetTools.UnregisterAssetTypeActions(CraftRecipeItemDataBase);
 		}
 	}
