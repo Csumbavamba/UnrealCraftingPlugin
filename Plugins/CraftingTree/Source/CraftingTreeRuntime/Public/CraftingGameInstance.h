@@ -25,10 +25,9 @@ public:
 
 	virtual void Shutdown() override;
 
-protected:
+private:
 
-	UPROPERTY(BlueprintReadOnly, Transient, Category = "Crafting Manager")
-		/** Singleton recipe manager that is accessed by the Player when Crafting */
-		UCraftRecipeManager* CraftRecipeManager = nullptr;
+	/** Singleton recipe manager that is accessed by the Player when Crafting */
+	UCraftRecipeManager* CraftRecipeManager = nullptr;
 	
 };

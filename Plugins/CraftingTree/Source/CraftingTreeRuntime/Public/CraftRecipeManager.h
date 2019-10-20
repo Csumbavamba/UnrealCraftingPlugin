@@ -20,27 +20,48 @@ public:
 
 	UCraftRecipeManager();
 
-	UFUNCTION(BlueprintCallable, Category = "Craft Recipe Manager") // TODO FIgure out whether this is needed or not
-		/** Loads all the Craft Recipe assets from Disk */
-		void LoadAllRecipes();
+	/** Empties the stored recipes */
+	void ClearRecipes();
 
-	UFUNCTION(BlueprintCallable, Category = "Craft Recipe Manager")
+	UFUNCTION(BlueprintPure, Category = "Craft Recipe Manager")
 		/**
-		* Adds the provided recipe to the Stored Crafting Recipes, while not adding duplicates
-		* @param RecipeToAdd A CraftRecipe that is to be registered by the Recipe Manager
+		* Checks whether there is a crafting recipe that uses the exact two recipes provided - if so it returns the class of the outcome
+		* @return The Class of the Result - NULL if the recipe doesn't exist
+		* @param Components The components that the player is trying to use for crafting
+		*
 		*/
-		void AddRecipe(UCraftRecipe* RecipeToAdd);
+		TSubclassOf<AActor> GetCraftResult(TArray<TSubclassOf<AActor>> Components);
 
-	UFUNCTION(BlueprintCallable, Category = "Craft Recipe Manager")
-		/** Empties the stored recipes */
-		void ClearRecipes();
+	
+protected:
 
-	AActor* GetCraftResult(TSubclassOf<AActor> Component1, TSubclassOf<AActor> Component2);
+	/** Loads all the Craft Recipe assets from Disk */
+	void LoadAllRecipes();
+
+	/**
+	* Goes through all the Basic recipes that are stored and returns the class of a crafting outcome
+	* @return The Class of the Crafting Outcome - NULL if the recipe doesn't exist
+	* @param Components An Array of Actor classes that were sent in as potential components
+	* NOTE: The Size of the Components Array is TWO
+	*/
+	TSubclassOf<AActor> TryFindBasicRecipe(TArray<TSubclassOf<AActor>> Components);
+
+	/**
+	* Goes through all the Advanced recipes that are stored and returns the class of a crafting outcome
+	* @return The Class of the Crafting Outcome - NULL if the recipe doesn't exist
+	* @param Components An Array of Actor classes that were sent in as potential components
+	* NOTE: The Size of the Components Array is MORE THAN TWO
+	*/
+	TSubclassOf<AActor> TryFindAdvancedRecipe(TArray<TSubclassOf<AActor>> Components);
 
 protected:
 
 	UPROPERTY(BlueprintReadOnly, Category = "Craft Recipe Manager")
-		/** All The Recipes that have can be used for Crafting */
-		TArray<UCraftRecipe*> StoredRecipes;
+		/** All The Basic Recipes that can be used for Crafting basic items and buildings */
+		TArray<UCraftRecipe*> BasicRecipes;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Craft Recipe Manager")
+		/** All The Basic Recipes that can be used for Crafting basic items and buildings */
+		TArray<UCraftRecipe*> AdvancedRecipes;
 	
 };

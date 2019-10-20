@@ -47,7 +47,7 @@ void UCraftRecipeManager::LoadAllRecipes()
 		// Find The Object
 		UObject* Object = Asset.GetAsset();
 
-		// LOg Message
+		// Log Message - TODO Remove after done
 		if (Object)
 		{
 			FString ObjectName = Object->GetName();
@@ -61,7 +61,16 @@ void UCraftRecipeManager::LoadAllRecipes()
 
 		if (CraftRecipe)
 		{
-			StoredRecipes.Add(CraftRecipe);
+			// If there are more than 2 components, add the Recipe to the Advanced Recipes
+			if (CraftRecipe->Components.Num() > 2)
+			{
+				AdvancedRecipes.Add(CraftRecipe);
+			}
+			// Otherwis add the Recipe to the Basic Recipes
+			else
+			{
+				BasicRecipes.Add(CraftRecipe);
+			}
 		}
 		else
 		{
@@ -72,42 +81,131 @@ void UCraftRecipeManager::LoadAllRecipes()
 	UE_LOG(LogTemp, Warning, TEXT("All Craft Recipes have Finished loading"));
 }
 
-void UCraftRecipeManager::AddRecipe(UCraftRecipe* RecipeToAdd)
-{
-	// Make sure it's a valid submission
-	if (RecipeToAdd)
-	{
-		// If the Recipe is not registered yet
-		if (!StoredRecipes.Contains(RecipeToAdd))
-		{
-			// Add the recipe
-			StoredRecipes.Add(RecipeToAdd);
-
-			FString Name = RecipeToAdd->GetName();
-			UE_LOG(LogTemp, Warning, TEXT("Recipe: %s is Added!!"), *Name); // TODO Remove once Tested
-		}
-		// Otherwise Log the name of the recipe - TODO Remove once Tested
-		else
-		{
-			FString Name = RecipeToAdd->GetName();
-			UE_LOG(LogTemp, Warning, TEXT("Recipe: %s has already been saved."), *Name);
-		}
-	}
-	// If Not valid
-	else
-	{
-		// Log Error
-		UE_LOG(LogTemp, Error, TEXT("Recipe is invalid!!"));
-	}
-}
 
 void UCraftRecipeManager::ClearRecipes()
 {
-	// Clean up the stored recipes
+	// Destroy all the elements stored inside the array
+	BasicRecipes.Empty();
+	AdvancedRecipes.Empty();
 }
 
 
-AActor* UCraftRecipeManager::GetCraftResult(TSubclassOf<AActor> Component1, TSubclassOf<AActor> Component2)
+TSubclassOf<AActor> UCraftRecipeManager::GetCraftResult(TArray<TSubclassOf<AActor>> Components)
 {
-	return nullptr;
+	// Class to Return
+	TSubclassOf<AActor> OutcomeClass = NULL;
+
+	UE_LOG(LogTemp, Warning, TEXT("Figuring out what type of recipe is needed... %s "));
+
+
+	// Check for the Number of Recipes that are stored
+	if (Components.Num() <= 2)
+	{
+		// Load Basic Recipe
+		UE_LOG(LogTemp, Warning, TEXT("Searching in Basic recipes..."));
+		OutcomeClass = TryFindBasicRecipe(Components);
+	}
+	else
+	{
+		// Load Advanced Recipe
+		UE_LOG(LogTemp, Warning, TEXT("Searching in Advanced recipes..."));
+		OutcomeClass = TryFindAdvancedRecipe(Components);
+	}
+
+	return OutcomeClass;
+}
+
+TSubclassOf<AActor> UCraftRecipeManager::TryFindBasicRecipe(TArray<TSubclassOf<AActor>> Components)
+{
+	// Class to Return
+	TSubclassOf<AActor> OutcomeClass = NULL;
+
+
+	// Go through each of the recipes
+	for (UCraftRecipe* CraftRecipe : BasicRecipes)
+	{
+		// Make sure that the Craft Recipe is valid
+		if (!CraftRecipe)
+		{
+			UE_LOG(LogTemp, Error, TEXT("A Craft recipe that is stored is Invalid!!"));
+			continue;
+		}
+
+
+		// If the first components is contained in the recipe
+		if (CraftRecipe->Components.Contains(Components[0]))
+		{
+			// Check for the second one
+			if (CraftRecipe->Components.Contains(Components[1]))
+			{
+				// The Recipe has been found - as both are contained in this recipe
+				OutcomeClass = CraftRecipe->Outcome;
+
+				// TODO Remove after log is done
+				UClass* Class = OutcomeClass;
+				FString ClassName = Class->GetFName().ToString();
+				UE_LOG(LogTemp, Warning, TEXT("Basic Craft Recipe found - outcome class is: %s"), *ClassName);
+
+				// Return the result
+				return OutcomeClass;
+			}
+		}
+	}
+
+	return OutcomeClass;
+}
+
+TSubclassOf<AActor> UCraftRecipeManager::TryFindAdvancedRecipe(TArray<TSubclassOf<AActor>> Components)
+{
+	// Class to Return
+	TSubclassOf<AActor> OutcomeClass = NULL;
+
+	int ComponentAmount = Components.Num();
+
+	// A bool that becomes false every time there is a component missmatch
+	bool bIsComponentMatching;
+
+	// Go through each of the recipes
+	for (UCraftRecipe* CraftRecipe : AdvancedRecipes)
+	{
+		bIsComponentMatching = true;
+
+		// Make sure that the Craft Recipe is valid
+		if (!CraftRecipe)
+		{
+			UE_LOG(LogTemp, Error, TEXT("A Craft recipe that is stored is Invalid!!"));
+			continue;
+		}
+
+		// Only Check the Recipe if they have the exact same amount of components
+		if (CraftRecipe->Components.Num() == ComponentAmount)
+		{
+			// Check for all the components (might be more than 3)
+			for (int i = 0; i < ComponentAmount; ++i)
+			{
+				// If any of the components are not contained, 
+				if (!CraftRecipe->Components.Contains(Components[i]))
+				{
+					bIsComponentMatching = false;
+					break;
+				}
+			}
+
+			// If there were no mismatches found
+			if (bIsComponentMatching)
+			{
+				OutcomeClass = CraftRecipe->Outcome;
+
+				// TODO Remove after log is done
+				UClass* Class = OutcomeClass;
+				FString ClassName = Class->GetFName().ToString();
+				UE_LOG(LogTemp, Warning, TEXT("Advanced Craft Recipe found - outcome class is: %s"), *ClassName);
+
+				// Return the result
+				return OutcomeClass;
+			}
+		}	
+	}
+
+	return OutcomeClass;
 }
