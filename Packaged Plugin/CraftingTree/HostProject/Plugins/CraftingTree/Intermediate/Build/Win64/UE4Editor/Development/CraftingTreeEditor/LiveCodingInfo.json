@@ -1,0 +1,14 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.CraftingTreeEditor.cpp.obj": [
+			"CraftingRecipeAssetDatabase.cpp.obj",
+			"CraftRecipeFactory.cpp.obj",
+			"ICraftingTreeEditor.cpp.obj"
+		],
+		"Module.CraftingTreeEditor.gen.cpp.obj": [
+			"CraftingTreeEditor.init.gen.cpp.obj",
+			"CraftRecipeFactory.gen.cpp.obj"
+		]
+	}
+}

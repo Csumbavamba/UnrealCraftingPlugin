@@ -1,0 +1,10 @@
+{
+	"FileVersion": 3,
+	"Plugins": [
+		{
+			"Name": "CraftingTree",
+			"Enabled": true
+		}
+	],
+	"EngineAssociation": "4.23"
+}

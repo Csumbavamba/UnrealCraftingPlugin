@@ -1,0 +1,14 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-CraftingTreeRuntime.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\Program Files\Unreal Engine\UE_4.23\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
+"D:\Programming\GitHub\UnrealCraftingPlugin\Packaged Plugin\CraftingTree\HostProject\Plugins\CraftingTree\Intermediate\Build\Win64\UE4Editor\Development\CraftingTreeRuntime\Module.CraftingTreeRuntime.cpp.obj"
+"D:\Programming\GitHub\UnrealCraftingPlugin\Packaged Plugin\CraftingTree\HostProject\Plugins\CraftingTree\Intermediate\Build\Win64\UE4Editor\Development\CraftingTreeRuntime\Module.CraftingTreeRuntime.gen.cpp.obj"
+"D:\Programming\GitHub\UnrealCraftingPlugin\Packaged Plugin\CraftingTree\HostProject\Plugins\CraftingTree\Intermediate\Build\Win64\UE4Editor\Development\CraftingTreeRuntime\Default.rc2.res"
+/OUT:"D:\Programming\GitHub\UnrealCraftingPlugin\Packaged Plugin\CraftingTree\HostProject\Plugins\CraftingTree\Intermediate\Build\Win64\UE4Editor\Development\CraftingTreeRuntime\UE4Editor-CraftingTreeRuntime.lib"
+/INCLUDE:IMPLEMENT_MODULE_CraftingTreeRuntime

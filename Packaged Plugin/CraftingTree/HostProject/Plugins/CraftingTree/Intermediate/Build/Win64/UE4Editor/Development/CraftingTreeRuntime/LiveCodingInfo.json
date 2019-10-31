@@ -1,0 +1,17 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.CraftingTreeRuntime.cpp.obj": [
+			"CraftingGameInstance.cpp.obj",
+			"CraftRecipe.cpp.obj",
+			"CraftRecipeManager.cpp.obj",
+			"ICraftingTreeRuntime.cpp.obj"
+		],
+		"Module.CraftingTreeRuntime.gen.cpp.obj": [
+			"CraftingGameInstance.gen.cpp.obj",
+			"CraftingTreeRuntime.init.gen.cpp.obj",
+			"CraftRecipe.gen.cpp.obj",
+			"CraftRecipeManager.gen.cpp.obj"
+		]
+	}
+}

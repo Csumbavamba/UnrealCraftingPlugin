@@ -1,0 +1,25 @@
+D:\Programming\GitHub\UnrealCraftingPlugin\Packaged Plugin\CraftingTree\HostProject\Plugins\CraftingTree\Intermediate\Build\Win64\UE4Editor\Development\CraftingTreeEditor\Definitions.CraftingTreeEditor.h
+D:/Programming/GitHub/UnrealCraftingPlugin/Packaged Plugin/CraftingTree/HostProject/Plugins/CraftingTree/Source/CraftingTreeEditor/Private/CraftingRecipeAssetDatabase.cpp
+D:\Programming\GitHub\UnrealCraftingPlugin\Packaged Plugin\CraftingTree\HostProject\Plugins\CraftingTree\Source\CraftingTreeEditor\Public\CraftingRecipeAssetDatabase.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Source\Developer\AssetTools/Public/AssetTypeActions_Base.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Source\Developer\AssetTools\Public\IAssetTools.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Source\Developer\AssetTools\Public\AssetTypeCategories.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Source\Developer\AssetTools\Public\IAssetTypeActions.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Source\Developer/Merge/Public/Merge.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Source\Editor\UnrealEd\Classes\ThumbnailRendering/ThumbnailManager.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Source\Editor\UnrealEd\Classes\ThumbnailRendering/ThumbnailRenderer.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd\ThumbnailRenderer.generated.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd\ThumbnailManager.generated.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Source\Editor\UnrealEd\Public\AutomatedAssetImportData.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd\AutomatedAssetImportData.generated.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Intermediate\Build\Win64\UE4Editor\Inc\AssetTools\IAssetTools.generated.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Source\Developer\AssetTools\Public\AssetToolsModule.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Source\Editor\UnrealEd\Public\Toolkits/SimpleAssetEditor.h
+D:\Program Files\Unreal Engine\UE_4.23\Engine\Source\Editor/PropertyEditor/Public/PropertyEditorDelegates.h
+D:\Programming\GitHub\UnrealCraftingPlugin\Packaged Plugin\CraftingTree\HostProject\Plugins\CraftingTree\Source\CraftingTreeRuntime/Public/CraftRecipe.h
+D:\Programming\GitHub\UnrealCraftingPlugin\Packaged Plugin\CraftingTree\HostProject\Plugins\CraftingTree\Intermediate\Build\Win64\UE4Editor\Inc\CraftingTreeRuntime\CraftRecipe.generated.h
+D:/Programming/GitHub/UnrealCraftingPlugin/Packaged Plugin/CraftingTree/HostProject/Plugins/CraftingTree/Source/CraftingTreeEditor/Private/CraftRecipeFactory.cpp
+D:\Programming\GitHub\UnrealCraftingPlugin\Packaged Plugin\CraftingTree\HostProject\Plugins\CraftingTree\Source\CraftingTreeEditor\Public\CraftRecipeFactory.h
+D:\Programming\GitHub\UnrealCraftingPlugin\Packaged Plugin\CraftingTree\HostProject\Plugins\CraftingTree\Intermediate\Build\Win64\UE4Editor\Inc\CraftingTreeEditor\CraftRecipeFactory.generated.h
+D:/Programming/GitHub/UnrealCraftingPlugin/Packaged Plugin/CraftingTree/HostProject/Plugins/CraftingTree/Source/CraftingTreeEditor/Private/ICraftingTreeEditor.cpp
+D:\Programming\GitHub\UnrealCraftingPlugin\Packaged Plugin\CraftingTree\HostProject\Plugins\CraftingTree\Source\CraftingTreeEditor\Public\ICraftingTreeEditor.h
